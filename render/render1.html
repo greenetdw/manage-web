@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+	<div id="app">
+		<anchor :level="2" title="特性">特性</anchor>
+	</div>
+	<script type="text/javascript" src="../vue.js"></script>
+	<script type="text/x-template" id="anchor">
+		<div>
+			<h1 v-if="level === 1">
+				<a :href="'#' + title ">
+					<slot></slot>
+				</a>
+			</h1>
+			<h2 v-if="level === 2">
+				<a :href="'#' + title ">
+					<slot></slot>
+				</a>
+			</h2>
+		</div>
+	</script>
+	<script type="text/javascript">
+		Vue.component('anchor', {
+			template : '#anchor',
+			props : {
+				level : {
+					type : Number,
+					required : true
+				},
+				title : {
+					type : String,
+					default : ''
+				}
+			}
+		});
+
+		new Vue({
+			el : '#app'
+		});
+
+		
+
+	</script>
+</body>
+</html>
+
+
